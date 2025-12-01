@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Applied Jobs - Capstone Jobs</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-[#1a1a2e] text-gray-100">
+  <header class="bg-[#16213e] text-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 flex justify-between items-center py-4">
+      <h1 class="text-2xl font-bold">Capstone Jobs</h1>
+      <div class="flex items-center space-x-6">
+        <nav class="hidden md:flex space-x-6">
+          <a href="index.html#home" class="hover:text-[#e94560]">Home</a>
+          <a href="jobs.html" class="hover:text-[#e94560]">Jobs</a>
+          <a href="applied.html" class="text-[#e94560] font-semibold">Applied Jobs</a>
+          <a href="admin.html" class="hover:text-[#e94560]">Admin</a>
+        </nav>
+        <div class="relative">
+          <div id="profile-initial" class="w-10 h-10 rounded-full bg-[#e94560] flex items-center justify-center text-white font-bold text-xl cursor-pointer">
+            <i class="fas fa-user"></i>
+          </div>
+          <div id="logout-menu" class="absolute right-0 mt-2 w-48 bg-[#16213e] rounded-md shadow-lg py-1 hidden">
+            <button id="logout-btn" class="block w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-[#0f3460]">Logout</button>
+          </div>
+        </div>
+      </div>
+      <button class="md:hidden text-2xl" onclick="toggleMenu()">☰</button>
+    </div>
+    <nav id="mobileMenu" class="hidden flex-col bg-[#0f3460] md:hidden px-6 py-3 space-y-2">
+      <a href="index.html#home" class="hover:text-[#e94560]">Home</a>
+      <a href="jobs.html" class="hover:text-[#e94560]">Jobs</a>
+      <a href="applied.html" class="hover:text-[#e94560]">Applied Jobs</a>
+      <a href="admin.html" class="hover:text-[#e94560]">Admin</a>
+    </nav>
+  </header>
+
+  <section class="max-w-7xl mx-auto px-6 py-12">
+    <div class="flex items-center justify-between mb-6">
+      <div>
+        <h2 class="text-3xl font-bold text-[#e94560]">Applied Jobs</h2>
+        <p class="text-gray-300">View all applications submitted with your account email.</p>
+      </div>
+      <a href="jobs.html" class="bg-[#e94560] text-white px-4 py-2 rounded-lg hover:bg-[#c2334d]">Browse More Jobs</a>
+    </div>
+
+    <div id="applied-empty" class="hidden bg-[#16213e] p-6 rounded-xl text-center">
+      <p class="text-gray-300">No applications yet. Apply for your first role to see it listed here.</p>
+    </div>
+
+    <div class="overflow-x-auto bg-[#16213e] rounded-xl shadow-lg" id="applied-table-wrapper">
+      <table class="min-w-full text-left" id="appliedJobsTable">
+        <thead>
+          <tr class="text-sm uppercase tracking-wider text-gray-400">
+            <th class="px-6 py-3">Job</th>
+            <th class="px-6 py-3">Name</th>
+            <th class="px-6 py-3">Email</th>
+            <th class="px-6 py-3">Applied On</th>
+            <th class="px-6 py-3 text-center">Resume</th>
+          </tr>
+        </thead>
+        <tbody id="appliedJobsBody" class="text-sm divide-y divide-[#0f3460]">
+        </tbody>
+      </table>
+    </div>
+
+    <div id="applied-error" class="hidden mt-4 text-red-400"></div>
+  </section>
+
+  <footer class="bg-[#0f3460] text-gray-400 py-6 text-center">
+    <p>&copy; 2025 Capstone Job Portal | Built for Placement Projects</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+

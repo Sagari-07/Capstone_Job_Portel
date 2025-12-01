@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Capstone Jobs</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-[#1a1a2e] text-gray-100 flex items-center justify-center min-h-screen">
+
+  <div class="bg-[#16213e] p-8 rounded-xl shadow-lg w-full max-w-md">
+    <h2 class="text-3xl font-bold text-center text-[#e94560] mb-6">Login</h2>
+    <form id="loginForm" class="space-y-4">
+      <div>
+        <label for="identifier" class="sr-only">Username or Email</label>
+        <input type="text" id="identifier" placeholder="Username or Email" 
+               class="w-full p-3 bg-[#1a1a2e] text-white rounded-lg border border-[#0f3460] focus:ring focus:ring-[#e94560] focus:border-[#e94560]" 
+               required>
+      </div>
+      <div>
+        <label for="password" class="sr-only">Password</label>
+        <input type="password" id="password" placeholder="Password" 
+               class="w-full p-3 bg-[#1a1a2e] text-white rounded-lg border border-[#0f3460] focus:ring focus:ring-[#e94560] focus:border-[#e94560]" 
+               required>
+      </div>
+      <button type="submit" 
+              class="w-full bg-[#e94560] text-white font-semibold py-3 rounded-lg hover:bg-[#c2334d] transition">
+        Log In
+      </button>
+    </form>
+    <p id="loginError" class="text-sm text-red-400 text-center mt-4 hidden"></p>
+    <p class="text-sm text-gray-400 mt-4 text-center">Admin demo: admin / Admin@123<br>User demo: student / User@123</p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

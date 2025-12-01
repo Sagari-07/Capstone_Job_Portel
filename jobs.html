@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Listings - Capstone Jobs</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body class="bg-[#1a1a2e] text-gray-100">
+  <!-- Header -->
+  <header class="bg-[#16213e] text-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 flex justify-between items-center py-4">
+      <h1 class="text-2xl font-bold">Capstone Jobs</h1>
+      <div class="flex items-center space-x-6">
+        <nav class="hidden md:flex space-x-6">
+          <a href="index.html#home" class="hover:text-[#e94560]">Home</a>
+          <a href="index.html#about" class="hover:text-[#e94560]">About</a>
+          <a href="jobs.html" class="text-[#e94560] font-semibold">Jobs</a>
+          <a href="applied.html" class="hover:text-[#e94560]">Applied Jobs</a>
+          <a href="index.html#contact" class="hover:text-[#e94560]">Contact</a>
+          <a href="admin.html" class="hover:text-[#e94560]">Admin</a>
+        </nav>
+        <div class="relative">
+          <div id="profile-initial" class="w-10 h-10 rounded-full bg-[#e94560] flex items-center justify-center text-white font-bold text-xl cursor-pointer">
+            <i class="fas fa-user"></i>
+          </div>
+          <div id="logout-menu" class="absolute right-0 mt-2 w-48 bg-[#16213e] rounded-md shadow-lg py-1 hidden">
+            <button id="logout-btn" class="block w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-[#0f3460]">Logout</button>
+          </div>
+        </div>
+      </div>
+      <button class="md:hidden text-2xl" onclick="toggleMenu()">☰</button>
+    </div>
+    <nav id="mobileMenu" class="hidden flex-col bg-[#0f3460] md:hidden px-6 py-3 space-y-2">
+      <a href="index.html#home" class="hover:text-[#e94560]">Home</a>
+      <a href="index.html#about" class="hover:text-[#e94560]">About</a>
+      <a href="jobs.html" class="hover:text-[#e94560]">Jobs</a>
+      <a href="applied.html" class="hover:text-[#e94560]">Applied Jobs</a>
+      <a href="index.html#contact" class="hover:text-[#e94560]">Contact</a>
+      <a href="admin.html" class="hover:text-[#e94560]">Admin</a>
+    </nav>
+  </header>
+
+  <!-- Job Search -->
+  <section class="max-w-7xl mx-auto px-6 py-8">
+    <h2 class="text-3xl font-bold text-[#e94560] mb-6 text-center">Available Job Listings</h2>
+    <div class="flex justify-center mb-6">
+      <input id="searchBox" type="text" placeholder="Search by role or company..." 
+        onkeyup="searchJobs()"
+        class="w-full md:w-1/2 p-3 rounded-lg border border-[#0f3460] bg-[#1a1a2e] text-white focus:ring focus:ring-[#e94560] focus:border-[#e94560]">
+    </div>
+
+    <!-- Job Listings -->
+    <div id="jobList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <div class="bg-[#16213e] p-6 rounded-xl shadow-lg hover:shadow-2xl transition"
+        data-job-id="job-1" data-role="data scientist" data-company="Google"
+        data-description="<p><strong>Job Description:</strong> Develop machine learning models and algorithms to solve complex business problems. Analyze large datasets to extract actionable insights.</p><p><strong>Eligibility:</strong></p><ul class='list-disc pl-5'><li>M.S. or Ph.D. in Computer Science, Statistics, or a related field</li><li>3-5 years of experience in data science or machine learning</li><li>Strong programming skills in Python or R</li><li>Expertise in statistical modeling and data visualization tools</li><li>Experience with big data technologies like Hadoop or Spark</li></ul>">
+        <h3 class="text-xl font-semibold text-[#e94560]">Google</h3>
+        <p><strong>Role:</strong> Data Scientist</p>
+        <p><strong>Experience:</strong> 3-5 years</p>
+        <button class="apply-btn mt-4 w-full bg-[#e94560] text-white py-2 rounded-lg hover:bg-[#c2334d]" onclick="openApplyForm(this)">Apply Now</button>
+      </div>
+
+      <div class="bg-[#16213e] p-6 rounded-xl shadow-lg hover:shadow-2xl transition"
+        data-job-id="job-2" data-role="cloud architect" data-company="Amazon Web Services"
+        data-description="<p><strong>Job Description:</strong> Design and build secure, scalable, and resilient cloud architectures. Work with clients to define requirements and implement solutions on AWS.</p><p><strong>Eligibility:</strong></p><ul class='list-disc pl-5'><li>Bachelor's degree in Computer Science or a related field</li><li>5-8 years of experience in cloud computing and architecture</li><li>AWS Certified Solutions Architect - Professional certification</li><li>Strong knowledge of networking, security, and storage in the cloud</li><li>Excellent communication and leadership skills</li></ul>">
+        <h3 class="text-xl font-semibold text-[#e94560]">Amazon Web Services</h3>
+        <p><strong>Role:</strong> Cloud Architect</p>
+        <p><strong>Experience:</strong> 5-8 years</p>
+        <button class="apply-btn mt-4 w-full bg-[#e94560] text-white py-2 rounded-lg hover:bg-[#c2334d]" onclick="openApplyForm(this)">Apply Now</button>
+      </div>
+
+      <div class="bg-[#16213e] p-6 rounded-xl shadow-lg hover:shadow-2xl transition"
+        data-job-id="job-3" data-role="ui/ux designer" data-company="Adobe"
+        data-description="<p><strong>Job Description:</strong> Create user-friendly interfaces and engaging experiences. Conduct user research, design wireframes, and prototypes using industry-standard tools.</p><p><strong>Eligibility:</strong></p><ul class='list-disc pl-5'><li>Bachelor's degree in Graphic Design, HCI, or related field</li><li>2-4 years of professional UI/UX design experience</li><li>Proficiency with design tools like Figma, Sketch, or Adobe XD</li><li>Strong portfolio showcasing design thinking and problem-solving</li><li>Knowledge of front-end development is a plus</li></ul>">
+        <h3 class="text-xl font-semibold text-[#e94560]">Adobe</h3>
+        <p><strong>Role:</strong> UI/UX Designer</p>
+        <p><strong>Experience:</strong> 2-4 years</p>
+        <button class="apply-btn mt-4 w-full bg-[#e94560] text-white py-2 rounded-lg hover:bg-[#c2334d]" onclick="openApplyForm(this)">Apply Now</button>
+      </div>
+
+      <div class="bg-[#16213e] p-6 rounded-xl shadow-lg hover:shadow-2xl transition"
+        data-job-id="job-4" data-role="software development engineer" data-company="Microsoft"
+        data-description="<p><strong>Job Description:</strong> Design, develop, and test high-quality software solutions. Collaborate with a team to build features, fix bugs, and improve system performance.</p><p><strong>Eligibility:</strong></p><ul class='list-disc pl-5'><li>B.S. in Computer Science or a related technical field</li><li>3-6 years of experience in software development</li><li>Proficiency in C#, Java, or Python</li><li>Strong knowledge of data structures and algorithms</li><li>Experience with cloud platforms like Azure is a plus</li></ul>">
+        <h3 class="text-xl font-semibold text-[#e94560]">Microsoft</h3>
+        <p><strong>Role:</strong> Software Development Engineer</p>
+        <p><strong>Experience:</strong> 3-6 years</p>
+        <button class="apply-btn mt-4 w-full bg-[#e94560] text-white py-2 rounded-lg hover:bg-[#c2334d]" onclick="openApplyForm(this)">Apply Now</button>
+      </div>
+
+      <div class="bg-[#16213e] p-6 rounded-xl shadow-lg hover:shadow-2xl transition"
+        data-job-id="job-5" data-role="cybersecurity analyst" data-company="Palo Alto Networks"
+        data-description="<p><strong>Job Description:</strong> Monitor security systems for threats, investigate incidents, and respond to cyberattacks. Conduct vulnerability assessments and implement security measures.</p><p><strong>Eligibility:</strong></p><ul class='list-disc pl-5'><li>Bachelor's degree in Cybersecurity or IT</li><li>2-5 years of experience in a security operations role</li><li>Knowledge of security information and event management (SIEM) tools</li><li>Relevant certifications like CompTIA Security+ or CISSP</li><li>Strong analytical and problem-solving skills</li></ul>">
+        <h3 class="text-xl font-semibold text-[#e94560]">Palo Alto Networks</h3>
+        <p><strong>Role:</strong> Cybersecurity Analyst</p>
+        <p><strong>Experience:</strong> 2-5 years</p>
+        <button class="apply-btn mt-4 w-full bg-[#e94560] text-white py-2 rounded-lg hover:bg-[#c2334d]" onclick="openApplyForm(this)">Apply Now</button>
+      </div>
+
+      <div class="bg-[#16213e] p-6 rounded-xl shadow-lg hover:shadow-2xl transition"
+        data-job-id="job-6" data-role="frontend developer" data-company="Netflix"
+        data-description="<p><strong>Job Description:</strong> Build responsive and high-performance user interfaces for web applications. Collaborate with designers and backend teams to deliver a seamless user experience.</p><p><strong>Eligibility:</strong></p><ul class='list-disc pl-5'><li>Bachelor's degree in Computer Science or a related field</li><li>3-5 years of experience with HTML, CSS, and JavaScript</li><li>Expertise in a modern framework like React, Vue, or Angular</li><li>Experience with API integration and state management</li><li>Familiarity with performance optimization and testing</li></ul>">
+        <h3 class="text-xl font-semibold text-[#e94560]">Netflix</h3>
+        <p><strong>Role:</strong> Frontend Developer</p>
+        <p><strong>Experience:</strong> 3-5 years</p>
+        <button class="apply-btn mt-4 w-full bg-[#e94560] text-white py-2 rounded-lg hover:bg-[#c2334d]" onclick="openApplyForm(this)">Apply Now</button>
+      </div>
+
+      <div class="bg-[#16213e] p-6 rounded-xl shadow-lg hover:shadow-2xl transition"
+        data-job-id="job-7" data-role="backend engineer" data-company="Salesforce"
+        data-description="<p><strong>Job Description:</strong> Design and build scalable server-side applications and APIs. Work on database design, business logic, and system integrations.</p><p><strong>Eligibility:</strong></p><ul class='list-disc pl-5'><li>B.E./B.Tech in Computer Science or equivalent</li><li>4-6 years of experience in backend development</li><li>Proficiency in Java, Python, or Go</li><li>Experience with SQL and NoSQL databases</li><li>Familiarity with microservices architecture</li></ul>">
+        <h3 class="text-xl font-semibold text-[#e94560]">Salesforce</h3>
+        <p><strong>Role:</strong> Backend Engineer</p>
+        <p><strong>Experience:</strong> 4-6 years</p>
+        <button class="apply-btn mt-4 w-full bg-[#e94560] text-white py-2 rounded-lg hover:bg-[#c2334d]" onclick="openApplyForm(this)">Apply Now</button>
+      </div>
+
+      <div class="bg-[#16213e] p-6 rounded-xl shadow-lg hover:shadow-2xl transition"
+        data-job-id="job-8" data-role="mobile app developer" data-company="Uber"
+        data-description="<p><strong>Job Description:</strong> Develop and maintain mobile applications for iOS or Android. Work with a cross-functional team to implement new features and improve performance.</p><p><strong>Eligibility:</strong></p><ul class='list-disc pl-5'><li>Bachelor's degree in a technical field</li><li>3-5 years of experience in mobile development</li><li>Proficiency in Swift/Kotlin or a cross-platform framework like React Native</li><li>Experience with mobile UI/UX design principles</li><li>Knowledge of app store deployment processes</li></ul>">
+        <h3 class="text-xl font-semibold text-[#e94560]">Uber</h3>
+        <p><strong>Role:</strong> Mobile App Developer</p>
+        <p><strong>Experience:</strong> 3-5 years</p>
+        <button class="apply-btn mt-4 w-full bg-[#e94560] text-white py-2 rounded-lg hover:bg-[#c2334d]" onclick="openApplyForm(this)">Apply Now</button>
+      </div>
+
+      <div class="bg-[#16213e] p-6 rounded-xl shadow-lg hover:shadow-2xl transition"
+        data-job-id="job-9" data-role="full stack developer" data-company="LinkedIn"
+        data-description="<p><strong>Job Description:</strong> Build and maintain both front-end and back-end components of web applications. Ensure seamless integration and functionality.</p><p><strong>Eligibility:</strong></p><ul class='list-disc pl-5'><li>B.S. in Computer Science or a related field</li><li>4-7 years of experience in full-stack development</li><li>Expertise in Node.js, Express, and a front-end framework like React</li><li>Experience with relational and NoSQL databases</li><li>Strong problem-solving and debugging skills</li></ul>">
+        <h3 class="text-xl font-semibold text-[#e94560]">LinkedIn</h3>
+        <p><strong>Role:</strong> Full Stack Developer</p>
+        <p><strong>Experience:</strong> 4-7 years</p>
+        <button class="apply-btn mt-4 w-full bg-[#e94560] text-white py-2 rounded-lg hover:bg-[#c2334d]" onclick="openApplyForm(this)">Apply Now</button>
+      </div>
+
+      <div class="bg-[#16213e] p-6 rounded-xl shadow-lg hover:shadow-2xl transition"
+        data-job-id="job-10" data-role="devops engineer" data-company="Atlassian"
+        data-description="<p><strong>Job Description:</strong> Automate and streamline development and deployment processes. Manage cloud infrastructure, CI/CD pipelines, and monitoring tools.</p><p><strong>Eligibility:</strong></p><ul class='list-disc pl-5'><li>Bachelor's degree in IT or a related field</li><li>3-6 years of experience in a DevOps or SRE role</li><li>Proficiency with tools like Docker, Kubernetes, Jenkins, or GitLab</li><li>Experience with cloud platforms (AWS, Azure, or GCP)</li><li>Strong understanding of scripting languages like Bash or Python</li></ul>">
+        <h3 class="text-xl font-semibold text-[#e94560]">Atlassian</h3>
+        <p><strong>Role:</strong> DevOps Engineer</p>
+        <p><strong>Experience:</strong> 3-6 years</p>
+        <button class="apply-btn mt-4 w-full bg-[#e94560] text-white py-2 rounded-lg hover:bg-[#c2334d]" onclick="openApplyForm(this)">Apply Now</button>
+      </div>
+
+      <div class="bg-[#16213e] p-6 rounded-xl shadow-lg hover:shadow-2xl transition"
+        data-job-id="job-11" data-role="product manager" data-company="Meta"
+        data-description="<p><strong>Job Description:</strong> Define the product vision, strategy, and roadmap. Lead cross-functional teams to deliver new products and features that meet customer needs.</p><p><strong>Eligibility:</strong></p><ul class='list-disc pl-5'><li>Bachelor's degree in Business, Engineering, or a related field</li><li>5+ years of experience in product management</li><li>Strong analytical and problem-solving skills</li><li>Excellent communication and leadership abilities</li><li>Experience with agile development methodologies</li></ul>">
+        <h3 class="text-xl font-semibold text-[#e94560]">Meta</h3>
+        <p><strong>Role:</strong> Product Manager</p>
+        <p><strong>Experience:</strong> 5+ years</p>
+        <button class="apply-btn mt-4 w-full bg-[#e94560] text-white py-2 rounded-lg hover:bg-[#c2334d]" onclick="openApplyForm(this)">Apply Now</button>
+      </div>
+
+      <div class="bg-[#16213e] p-6 rounded-xl shadow-lg hover:shadow-2xl transition"
+        data-job-id="job-12" data-role="qa engineer" data-company="Apple"
+        data-description="<p><strong>Job Description:</strong> Design, develop, and execute test plans for software products. Identify and report bugs, and collaborate with development teams to ensure quality releases.</p><p><strong>Eligibility:</strong></p><ul class='list-disc pl-5'><li>B.S. in Computer Science or a related technical field</li><li>3-5 years of experience in software quality assurance</li><li>Proficiency in test automation frameworks like Selenium or Cypress</li><li>Strong knowledge of software development lifecycle (SDLC)</li><li>Experience with performance and security testing</li></ul>">
+        <h3 class="text-xl font-semibold text-[#e94560]">Apple</h3>
+        <p><strong>Role:</strong> QA Engineer</p>
+        <p><strong>Experience:</strong> 3-5 years</p>
+        <button class="apply-btn mt-4 w-full bg-[#e94560] text-white py-2 rounded-lg hover:bg-[#c2334d]" onclick="openApplyForm(this)">Apply Now</button>
+      </div>
+
+      <div class="bg-[#16213e] p-6 rounded-xl shadow-lg hover:shadow-2xl transition"
+        data-job-id="job-13" data-role="machine learning engineer" data-company="NVIDIA"
+        data-description="<p><strong>Job Description:</strong> Build, deploy, and maintain machine learning systems. Optimize ML models for performance and scalability on various hardware platforms.</p><p><strong>Eligibility:</strong></p><ul class='list-disc pl-5'><li>M.S. or Ph.D. in Computer Science or a related field</li><li>4-7 years of experience in machine learning or AI engineering</li><li>Strong programming skills in Python with libraries like TensorFlow or PyTorch</li><li>Experience with distributed systems and big data technologies</li><li>Familiarity with GPU programming is a plus</li></ul>">
+        <h3 class="text-xl font-semibold text-[#e94560]">NVIDIA</h3>
+        <p><strong>Role:</strong> Machine Learning Engineer</p>
+        <p><strong>Experience:</strong> 4-7 years</p>
+        <button class="apply-btn mt-4 w-full bg-[#e94560] text-white py-2 rounded-lg hover:bg-[#c2334d]" onclick="openApplyForm(this)">Apply Now</button>
+      </div>
+
+      <div class="bg-[#16213e] p-6 rounded-xl shadow-lg hover:shadow-2xl transition"
+        data-job-id="job-14" data-role="database administrator" data-company="Oracle"
+        data-description="<p><strong>Job Description:</strong> Manage and maintain database systems to ensure data integrity, security, and performance. Perform backups, recoveries, and migrations.</p><p><strong>Eligibility:</strong></p><ul class='list-disc pl-5'><li>Bachelor's degree in Computer Science or a related field</li><li>3-5 years of experience as a DBA</li><li>Proficiency in SQL and experience with database systems like Oracle, MySQL, or PostgreSQL</li><li>Knowledge of database security and performance tuning</li><li>Certifications like Oracle Certified Professional are highly desirable</li></ul>">
+        <h3 class="text-xl font-semibold text-[#e94560]">Oracle</h3>
+        <p><strong>Role:</strong> Database Administrator</p>
+        <p><strong>Experience:</strong> 3-5 years</p>
+        <button class="apply-btn mt-4 w-full bg-[#e94560] text-white py-2 rounded-lg hover:bg-[#c2334d]" onclick="openApplyForm(this)">Apply Now</button>
+      </div>
+
+      <div class="bg-[#16213e] p-6 rounded-xl shadow-lg hover:shadow-2xl transition"
+        data-job-id="job-15" data-role="network engineer" data-company="Cisco"
+        data-description="<p><strong>Job Description:</strong> Design, implement, and manage network infrastructure. Troubleshoot network issues and ensure high availability and security.</p><p><strong>Eligibility:</strong></p><ul class='list-disc pl-5'><li>Bachelor's degree in Computer Engineering or a related field</li><li>4-6 years of experience in network engineering</li><li>Cisco Certified Network Professional (CCNP) or similar certification</li><li>Strong knowledge of TCP/IP, routing, and switching protocols</li><li>Experience with network security and firewalls</li></ul>">
+        <h3 class="text-xl font-semibold text-[#e94560]">Cisco</h3>
+        <p><strong>Role:</strong> Network Engineer</p>
+        <p><strong>Experience:</strong> 4-6 years</p>
+        <button class="apply-btn mt-4 w-full bg-[#e94560] text-white py-2 rounded-lg hover:bg-[#c2334d]" onclick="openApplyForm(this)">Apply Now</button>
+      </div>
+
+      <div class="bg-[#16213e] p-6 rounded-xl shadow-lg hover:shadow-2xl transition"
+        data-job-id="job-16" data-role="systems analyst" data-company="IBM"
+        data-description="<p><strong>Job Description:</strong> Analyze and design new business systems and information technology solutions. Work with stakeholders to define requirements and deliver solutions that improve efficiency.</p><p><strong>Eligibility:</strong></p><ul class='list-disc pl-5'><li>Bachelor's degree in Information Systems, Business, or a related field</li><li>3-5 years of experience as a systems analyst</li><li>Strong analytical and problem-solving skills</li><li>Excellent documentation and communication skills</li><li>Experience with process modeling and system design tools</li></ul>">
+        <h3 class="text-xl font-semibold text-[#e94560]">IBM</h3>
+        <p><strong>Role:</strong> Systems Analyst</p>
+        <p><strong>Experience:</strong> 3-5 years</p>
+        <button class="apply-btn mt-4 w-full bg-[#e94560] text-white py-2 rounded-lg hover:bg-[#c2334d]" onclick="openApplyForm(this)">Apply Now</button>
+      </div>
+
+      <div class="bg-[#16213e] p-6 rounded-xl shadow-lg hover:shadow-2xl transition"
+        data-job-id="job-17" data-role="data analyst" data-company="Intel"
+        data-description="<p><strong>Job Description:</strong> Collect, process, and perform statistical analysis of data. Use data to identify trends, create visualizations, and provide business recommendations.</p><p><strong>Eligibility:</strong></p><ul class='list-disc pl-5'><li>Bachelor's degree in Statistics, Mathematics, or a related field</li><li>2-4 years of experience as a data analyst</li><li>Proficiency with SQL and data visualization tools like Tableau or Power BI</li><li>Strong Excel skills and knowledge of statistical software (e.g., R, SPSS)</li><li>Excellent attention to detail and ability to work with large datasets</li></ul>">
+        <h3 class="text-xl font-semibold text-[#e94560]">Intel</h3>
+        <p><strong>Role:</strong> Data Analyst</p>
+        <p><strong>Experience:</strong> 2-4 years</p>
+        <button class="apply-btn mt-4 w-full bg-[#e94560] text-white py-2 rounded-lg hover:bg-[#c2334d]" onclick="openApplyForm(this)">Apply Now</button>
+      </div>
+
+      <div class="bg-[#16213e] p-6 rounded-xl shadow-lg hover:shadow-2xl transition"
+        data-job-id="job-18" data-role="cloud engineer" data-company="Salesforce"
+        data-description="<p><strong>Job Description:</strong> Implement and manage cloud-based solutions. Work on infrastructure as code, CI/CD pipelines, and cloud security best practices.</p><p><strong>Eligibility:</strong></p><ul class='list-disc pl-5'><li>Bachelor's degree in Computer Science or a related field</li><li>3-6 years of experience in cloud engineering</li><li>Experience with Salesforce Platform, AWS, or Azure</li><li>Knowledge of containerization technologies like Docker and Kubernetes</li><li>Strong scripting skills in Python, Bash, or PowerShell</li></ul>">
+        <h3 class="text-xl font-semibold text-[#e94560]">Salesforce</h3>
+        <p><strong>Role:</strong> Cloud Engineer</p>
+        <p><strong>Experience:</strong> 3-6 years</p>
+        <button class="apply-btn mt-4 w-full bg-[#e94560] text-white py-2 rounded-lg hover:bg-[#c2334d]" onclick="openApplyForm(this)">Apply Now</button>
+      </div>
+
+      <div class="bg-[#16213e] p-6 rounded-xl shadow-lg hover:shadow-2xl transition"
+        data-job-id="job-19" data-role="data engineer" data-company="Palantir"
+        data-description="<p><strong>Job Description:</strong> Design, build, and maintain data pipelines and ETL processes. Ensure data quality and accessibility for data scientists and analysts.</p><p><strong>Eligibility:</strong></p><ul class='list-disc pl-5'><li>B.S. in Computer Science or a related technical field</li><li>4-6 years of experience in data engineering</li><li>Proficiency in Python, SQL, and big data technologies like Spark or Hadoop</li><li>Experience with cloud data platforms (e.g., Google BigQuery, Snowflake)</li><li>Strong understanding of data modeling and warehousing concepts</li></ul>">
+        <h3 class="text-xl font-semibold text-[#e94560]">Palantir</h3>
+        <p><strong>Role:</strong> Data Engineer</p>
+        <p><strong>Experience:</strong> 4-6 years</p>
+        <button class="apply-btn mt-4 w-full bg-[#e94560] text-white py-2 rounded-lg hover:bg-[#c2334d]" onclick="openApplyForm(this)">Apply Now</button>
+      </div>
+
+      <div class="bg-[#16213e] p-6 rounded-xl shadow-lg hover:shadow-2xl transition"
+        data-job-id="job-20" data-role="site reliability engineer" data-company="Cloudflare"
+        data-description="<p><strong>Job Description:</strong> Ensure the reliability and scalability of systems by implementing automated solutions for monitoring and incident response. Focus on uptime and performance.</p><p><strong>Eligibility:</strong></p><ul class='list-disc pl-5'><li>Bachelor's degree in a technical field</li><li>5+ years of experience in a SRE or DevOps role</li><li>Proficiency in a programming language like Go or Python</li><li>Strong knowledge of Linux systems and cloud infrastructure</li><li>Experience with monitoring tools like Prometheus or Grafana</li></ul>">
+        <h3 class="text-xl font-semibold text-[#e94560]">Cloudflare</h3>
+        <p><strong>Role:</strong> Site Reliability Engineer</p>
+        <p><strong>Experience:</strong> 5+ years</p>
+        <button class="apply-btn mt-4 w-full bg-[#e94560] text-white py-2 rounded-lg hover:bg-[#c2334d]" onclick="openApplyForm(this)">Apply Now</button>
+      </div>
+
+      <div class="bg-[#16213e] p-6 rounded-xl shadow-lg hover:shadow-2xl transition"
+        data-job-id="job-21" data-role="embedded systems engineer" data-company="Tesla"
+        data-description="<p><strong>Job Description:</strong> Develop and debug software for embedded systems in electric vehicles. Work on firmware and low-level software to control vehicle components.</p><p><strong>Eligibility:</strong></p><ul class='list-disc pl-5'><li>B.S. in Electrical Engineering or Computer Engineering</li><li>3-6 years of experience in embedded systems development</li><li>Proficiency in C/C++ and experience with RTOS</li><li>Knowledge of hardware-software integration and debugging tools</li><li>Experience with CAN bus and automotive protocols is a plus</li></ul>">
+        <h3 class="text-xl font-semibold text-[#e94560]">Tesla</h3>
+        <p><strong>Role:</strong> Embedded Systems Engineer</p>
+        <p><strong>Experience:</strong> 3-6 years</p>
+        <button class="apply-btn mt-4 w-full bg-[#e94560] text-white py-2 rounded-lg hover:bg-[#c2334d]" onclick="openApplyForm(this)">Apply Now</button>
+      </div>
+
+      <div class="bg-[#16213e] p-6 rounded-xl shadow-lg hover:shadow-2xl transition"
+        data-job-id="job-22" data-role="game developer" data-company="Epic Games"
+        data-description="<p><strong>Job Description:</strong> Design, code, and test game features for various platforms. Collaborate with artists and designers to create engaging gameplay experiences.</p><p><strong>Eligibility:</strong></p><ul class='list-disc pl-5'><li>Bachelor's degree in Computer Science or Game Development</li><li>2-5 years of experience in game development</li><li>Proficiency in C++ and experience with a game engine like Unreal Engine or Unity</li><li>Strong knowledge of 3D graphics, physics, and AI</li><li>A passion for video games and a strong portfolio of projects</li></ul>">
+        <h3 class="text-xl font-semibold text-[#e94560]">Epic Games</h3>
+        <p><strong>Role:</strong> Game Developer</p>
+        <p><strong>Experience:</strong> 2-5 years</p>
+        <button class="apply-btn mt-4 w-full bg-[#e94560] text-white py-2 rounded-lg hover:bg-[#c2334d]" onclick="openApplyForm(this)">Apply Now</button>
+      </div>
+
+      <div class="bg-[#16213e] p-6 rounded-xl shadow-lg hover:shadow-2xl transition"
+        data-job-id="job-23" data-role="blockchain developer" data-company="Coinbase"
+        data-description="<p><strong>Job Description:</strong> Develop and deploy smart contracts and decentralized applications (dApps). Work on secure and scalable blockchain solutions.</p><p><strong>Eligibility:</strong></p><ul class='list-disc pl-5'><li>B.S. in Computer Science or a related field</li><li>3-5 years of experience in blockchain development</li><li>Proficiency in languages like Solidity, Rust, or Go</li><li>Strong understanding of blockchain fundamentals and cryptography</li><li>Experience with Ethereum, Solana, or other blockchain platforms</li></ul>">
+        <h3 class="text-xl font-semibold text-[#e94560]">Coinbase</h3>
+        <p><strong>Role:</strong> Blockchain Developer</p>
+        <p><strong>Experience:</strong> 3-5 years</p>
+        <button class="apply-btn mt-4 w-full bg-[#e94560] text-white py-2 rounded-lg hover:bg-[#c2334d]" onclick="openApplyForm(this)">Apply Now</button>
+      </div>
+
+      <div class="bg-[#16213e] p-6 rounded-xl shadow-lg hover:shadow-2xl transition"
+        data-job-id="job-24" data-role="machine learning research scientist" data-company="DeepMind"
+        data-description="<p><strong>Job Description:</strong> Conduct cutting-edge research in machine learning and artificial intelligence. Publish papers and contribute to the development of new algorithms.</p><p><strong>Eligibility:</strong></p><ul class='list-disc pl-5'><li>Ph.D. in Computer Science, Machine Learning, or a related field</li><li>Proven track record of publications in top-tier conferences (e.g., NeurIPS, ICML)</li><li>Strong research background in deep learning, reinforcement learning, or a related area</li><li>Excellent programming skills in Python</li><li>Ability to work in a collaborative research environment</li></ul>">
+        <h3 class="text-xl font-semibold text-[#e94560]">DeepMind</h3>
+        <p><strong>Role:</strong> Machine Learning Research Scientist</p>
+        <p><strong>Experience:</strong> N/A</p>
+        <button class="apply-btn mt-4 w-full bg-[#e94560] text-white py-2 rounded-lg hover:bg-[#c2334d]" onclick="openApplyForm(this)">Apply Now</button>
+      </div>
+
+      <div class="bg-[#16213e] p-6 rounded-xl shadow-lg hover:shadow-2xl transition"
+        data-job-id="job-25" data-role="data scientist" data-company="Stripe"
+        data-description="<p><strong>Job Description:</strong> Apply statistical and machine learning techniques to financial data. Build models to detect fraud, optimize payments, and improve user experience.</p><p><strong>Eligibility:</strong></p><ul class='list-disc pl-5'><li>M.S. or Ph.D. in a quantitative field (e.g., Statistics, Economics, Computer Science)</li><li>3-6 years of experience in data science, preferably in the fintech industry</li><li>Strong skills in Python and SQL</li><li>Experience with A/B testing, causal inference, and time-series analysis</li><li>Ability to communicate complex findings to a non-technical audience</li></ul>">
+        <h3 class="text-xl font-semibold text-[#e94560]">Stripe</h3>
+        <p><strong>Role:</strong> Data Scientist</p>
+        <p><strong>Experience:</strong> 3-6 years</p>
+        <button class="apply-btn mt-4 w-full bg-[#e94560] text-white py-2 rounded-lg hover:bg-[#c2334d]" onclick="openApplyForm(this)">Apply Now</button>
+      </div>
+
+    </div>
+
+    </div>
+  </section>
+
+  <!-- Pagination -->
+  <div class="flex justify-center space-x-4 my-8">
+    <button onclick="showPage(1)" class="px-4 py-2 bg-[#0f3460] text-white rounded-lg">1</button>
+    <button onclick="showPage(2)" class="px-4 py-2 bg-[#0f3460] text-white rounded-lg">2</button>
+    <button onclick="showPage(3)" class="px-4 py-2 bg-[#0f3460] text-white rounded-lg">3</button>
+  </div>
+
+  <!-- Apply Modal -->
+  <div id="applyModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-[#16213e] p-6 rounded-xl shadow-lg max-w-md w-full">
+      <h2 id="jobTitle" class="text-xl font-bold text-[#e94560] mb-4"></h2>
+      <p id="jobDescription" class="text-gray-300 mb-4"></p>
+      <form id="applyForm" class="space-y-3" enctype="multipart/form-data">
+        <input type="hidden" id="currentJobId" name="jobId">
+        <input type="hidden" id="currentJobTitle" name="jobTitle">
+        <input type="text" id="applicantName" name="name" placeholder="Your Name" class="w-full p-3 bg-[#1a1a2e] text-white rounded-lg border border-[#0f3460]" required>
+        <input type="email" id="applicantEmail" name="email" placeholder="Your Email" class="w-full p-3 bg-[#1a1a2e] text-white rounded-lg border border-[#0f3460]" required>
+        <input type="file" id="resumeFile" name="resume" class="w-full p-3 text-gray-300 bg-[#1a1a2e] rounded-lg border border-[#0f3460]" accept=".pdf,.doc,.docx" required>
+        <button type="submit" class="bg-[#e94560] text-white px-6 py-3 rounded-lg hover:bg-[#c2334d] w-full">Submit Application</button>
+      </form>
+      <button onclick="closeApplyModal()" class="mt-4 text-gray-400 hover:text-white">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <div id="successModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-[#16213e] p-6 rounded-xl shadow-lg max-w-md text-center">
+      <h2 class="text-xl font-bold text-green-500 mb-4">✅ Application Submitted</h2>
+      <p class="text-gray-300">Your application has been successfully submitted.</p>
+      <button onclick="closeSuccessModal()" class="mt-4 bg-[#e94560] text-white px-4 py-2 rounded-lg hover:bg-[#c2334d]">OK</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-[#0f3460] text-gray-400 py-6 text-center">
+    <p>&copy; 2025 Capstone Job Portal | Built for Placement Projects</p>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <script>
+    // Pagination: Show jobs per page
+    function showPage(page) {
+      const jobs = document.querySelectorAll("#jobList > div");
+      const jobsPerPage = 9; // 8–9 jobs per page
+      jobs.forEach((job, index) => {
+        job.style.display = (index >= (page - 1) * jobsPerPage && index < page * jobsPerPage) ? "block" : "none";
+      });
+    }
+
+    // Load page 1 by default
+    document.addEventListener("DOMContentLoaded", () => {
+      showPage(1);
+    });
+  </script>
+</body>
+</html>
